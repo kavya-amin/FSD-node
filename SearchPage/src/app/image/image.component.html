@@ -1,0 +1,25 @@
+<p>image works!</p>
+<h3>Angular 7 Image Preview before Upload:</h3>
+
+<div class="form-group">
+        <label for="assImg">Associate Image</label><br>
+        <label>
+            <input type="file" (change)="selectFile($event)">
+        </label>
+        <button [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+</div>
+
+
+
+<div class="form-group">
+    <button type="button" (click)="togglePhotoPreview()" alt="welcome" 
+    
+    class="btn btn-primary">
+        {{previewPhoto? "Hide" : "Show" }} Preview
+    </button>
+</div>
+
+<div class="form-group">
+        <img [src]="assImage" height="100" width="100" *ngIf="previewPhoto">
+    
+    </div>

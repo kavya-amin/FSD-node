@@ -5,13 +5,13 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  const students = await Student.find().sort('studentName');
+  const students = await Student.find().sort();
   res.send(students);
 });
 
 router.post('/', async (req, res) => {
   const { error } = validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).send(error);
 
   const course = await Course.findById(req.body.courseId);
   if (!course) return res.status(400).send('Invalid course.');
@@ -22,10 +22,10 @@ router.post('/', async (req, res) => {
       _id: course._id,
       name: course.name
     }
-  })
-  student = await Student.save();
+  });
+  student = await student.save();
   
-  res.send(Student);
+  res.send(student);
 });
 
 router.put('/:id', async (req, res) => {

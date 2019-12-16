@@ -1,0 +1,32 @@
+<p>save-everything works!</p>
+<div class="row">    
+        <div class="col-md-8 offset-md-2">
+            <div class="btn-group mr-3" id="outer">
+                
+                <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+                    <button class="btn btn-outline-danger" ngbDropdownToggle>{{selectedOption}}</button>
+                    <div class="dropdown-menu" ngbDropdownMenu>
+                        <button ngbDropdownItem (click)="selected('id')">ID</button>
+                        <button ngbDropdownItem (click)="selected('name')">Name</button>
+                        <button ngbDropdownItem (click)="selected('mobile')">Mobile</button>
+                        <button ngbDropdownItem (click)="selected('email')">Email</button>
+                        <button ngbDropdownItem (click)="selected('skills')">Skills</button>
+                    </div>
+                </div>
+            
+                <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+                    <button class="btn btn-outline-success" ngbDropdownToggle>{{sortBy}}</button>
+                    <div class="dropdown-menu" ngbDropdownMenu>
+                        <button *ngFor="let s of sortOn" (click)="selectedSort(s)" ngbDropdownItem>{{s}}</button>
+                    </div>
+                </div>
+            
+                <div class="md-form active-purple-2 mr-3">
+                    <input (keyup)="searchCall()" [(ngModel)] = "typed" name="searchbar" *ngIf="enableSearch" class="form-control" placeholder={{searchPlaceholder}} type="search" id="searchbar" aria-label="Search" mdbInput>
+                    <input *ngIf="!enableSearch" disabled class="form-control" placeholder={{searchPlaceholder}} type="search" id="searchbar" aria-label="Search" mdbInput>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
